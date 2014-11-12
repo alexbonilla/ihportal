@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="factura" language="groovy" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="ireport.zoom" value="1.3636363636363662"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="1344"/>
+	<parameter name="paramclave" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\jboss-as-7.1.1.Final\\modules\\Reportes\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT * FROM ce_infotributaria t, ce_infofactura f, clientes c WHERE t.claveacceso = $P{paramclave} AND f.claveacceso = t.claveacceso AND c.identificacion = f.identificacioncomprador;]]>
+	</queryString>
+	<field name="ambiente" class="java.lang.Integer">
+		<fieldDescription><![CDATA[1 - pruebas, 2 - produccion]]></fieldDescription>
+	</field>
+	<field name="tipoemision" class="java.lang.Integer">
+		<fieldDescription><![CDATA[1 - normal, 2 - contingencia]]></fieldDescription>
+	</field>
+	<field name="razonsocial" class="java.lang.String"/>
+	<field name="nombrecomercial" class="java.lang.String"/>
+	<field name="ruc" class="java.lang.String"/>
+	<field name="claveacceso" class="java.lang.String"/>
+	<field name="coddoc" class="java.lang.String">
+		<fieldDescription><![CDATA[codigo del documento (factura, comprobante de retencion, nota de debito, nota de credito o guia de remision)]]></fieldDescription>
+	</field>
+	<field name="estab" class="java.lang.String">
+		<fieldDescription><![CDATA[codigo de establecimiento]]></fieldDescription>
+	</field>
+	<field name="ptoemi" class="java.lang.String">
+		<fieldDescription><![CDATA[codigo de punto de emision en el establecimiento]]></fieldDescription>
+	</field>
+	<field name="secuencial" class="java.lang.String">
+		<fieldDescription><![CDATA[numero id del documento]]></fieldDescription>
+	</field>
+	<field name="dirmatriz" class="java.lang.String"/>
+	<field name="idtramite" class="java.lang.Integer"/>
+	<field name="fechaemision" class="java.sql.Timestamp"/>
+	<field name="direstablecimiento" class="java.lang.String"/>
+	<field name="contribuyenteespecial" class="java.lang.String"/>
+	<field name="obligadocontabilidad" class="java.lang.String"/>
+	<field name="tipoidentificacioncomprador" class="java.lang.String"/>
+	<field name="razonsocialcomprador" class="java.lang.String"/>
+	<field name="identificacioncomprador" class="java.lang.String"/>
+	<field name="totalsinimpuestos" class="java.math.BigDecimal"/>
+	<field name="totaldescuento" class="java.math.BigDecimal"/>
+	<field name="propina" class="java.math.BigDecimal"/>
+	<field name="importetotal" class="java.math.BigDecimal"/>
+	<field name="moneda" class="java.lang.String"/>
+	<field name="identificacion" class="java.lang.String"/>
+	<field name="tipoidentificacion" class="java.lang.String"/>
+	<field name="direccion" class="java.lang.String"/>
+	<field name="tipocliente" class="java.lang.String"/>
+	<field name="telefonofijo" class="java.lang.String"/>
+	<field name="extensionfijo" class="java.lang.String"/>
+	<field name="telefonomovil" class="java.lang.String"/>
+	<field name="email" class="java.lang.String"/>
+	<field name="credito" class="java.math.BigDecimal"/>
+	<background>
+		<band height="842" splitType="Stretch">
+			<rectangle>
+				<reportElement x="86" y="162" width="430" height="150"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="395" y="312" width="121" height="40"/>
+			</rectangle>
+		</band>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="162" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement x="457" y="111" width="53" height="12"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{idtramite}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="382" y="111" width="75" height="12"/>
+				<textElement>
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<text><![CDATA[Num. Trámite:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="86" y="123" width="75" height="12"/>
+				<textElement>
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<text><![CDATA[Razón Social:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="163" y="123" width="347" height="12"/>
+				<textElement>
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{razonsocialcomprador}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="86" y="135" width="75" height="12"/>
+				<textElement>
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<text><![CDATA[R.U.C. / C.I.:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="164" y="135" width="183" height="12"/>
+				<textElement>
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{identificacioncomprador}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="346" y="135" width="59" height="12"/>
+				<textElement>
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<text><![CDATA[Fecha:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="405" y="135" width="105" height="12"/>
+				<textElement>
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fechaemision}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="86" y="147" width="75" height="12"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Direccion]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="163" y="147" width="183" height="12"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{direccion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="347" y="147" width="58" height="12"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Teléfono:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="405" y="147" width="105" height="12"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{telefonofijo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="150" splitType="Stretch">
+			<subreport>
+				<reportElement x="86" y="0" width="424" height="150"/>
+				<subreportParameter name="paramclave_detalles">
+					<subreportParameterExpression><![CDATA[$P{paramclave}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["factura_detalles_notaria.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="40" splitType="Stretch">
+			<staticText>
+				<reportElement x="405" y="14" width="52" height="14"/>
+				<textElement>
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<text><![CDATA[IVA 12%]]></text>
+			</staticText>
+			<subreport>
+				<reportElement x="457" y="14" width="53" height="14"/>
+				<subreportParameter name="paramclave_totimpuestos">
+					<subreportParameterExpression><![CDATA[$P{paramclave}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["factura_valorimpuestos_IVA12_notaria.jasper"]]></subreportExpression>
+			</subreport>
+			<textField>
+				<reportElement x="457" y="28" width="53" height="12"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{importetotal}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="405" y="28" width="52" height="12"/>
+				<textElement>
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<text><![CDATA[TOTAL]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="457" y="0" width="53" height="14"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totalsinimpuestos}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="405" y="0" width="52" height="14"/>
+				<textElement>
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<text><![CDATA[SubTotal]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="490" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
